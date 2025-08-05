@@ -1,3 +1,4 @@
+
 export async function login(email, password) {
   const url = 'https://api.wifipool.eu/native_mobile/users/login';
   const loginData = { email, namespace: 'default', password };
@@ -30,12 +31,12 @@ export async function getStats(domain, io, cookies) {
   return await response.json();
 }
 
-export function extractLatestValue(data) {
+export function extractLatestValue(data, key) {
   if (Array.isArray(data) && data.length > 0) {
     const latestEntry = data[data.length - 1];
     const analog = latestEntry?.device_sensor_data?.analog;
-    if (analog && analog['4'] !== undefined) {
-      return analog['4'];
+    if (analog && analog[key] !== undefined) {
+      return analog[key];
     }
   }
   return null;

@@ -1,4 +1,4 @@
-import { extractLatestValue } from './index.js';
+import { extractLatestValue } from './lib/wifipool.js';
 
 // Sample data mimicking the API response structure
 const sampleData = [
@@ -9,7 +9,7 @@ const sampleData = [
   }
 ];
 
-const value = extractLatestValue(sampleData);
+const value = extractLatestValue(sampleData, '4');
 if (value !== 7.2) {
   console.error('extractLatestValue failed', value);
   process.exit(1);
